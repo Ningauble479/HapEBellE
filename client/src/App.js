@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Should we name this hapEbelE or Roshi Farms? 
+          Should we name this Hap-E-Bell-E or Roshi Farms? 
         </a>
       </header>
     </div>
