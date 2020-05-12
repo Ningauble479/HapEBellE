@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "name": "Recipe"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Recipe_Name": {
+      "type": "string"
+    },
+    "RecipeTime": {
+      "type": "string"
+    },
+    "Feeds": {
+      "type": "string"
+    },
+    "Steps": {
+      "type": "richtext"
+    },
+    "Pictures": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Ingredients": {
+      "type": "richtext"
+    },
+    "MeatTypes": {
+      "type": "string"
+    },
+    "ExtraTags": {
+      "type": "string"
+    },
+    "Time": {
+      "type": "time"
+    }
+  }
+}

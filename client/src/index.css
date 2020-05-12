@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  color: whitesmoke;
+  background-color: gray;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.linkCleaner {
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkCleaner:visited {
+  text-decoration: none;
+}
+
+.linkCleaner:hover {
+  color: wheat
+}
+
+.full {
+  width: 100%;
+  height: 100%
 }

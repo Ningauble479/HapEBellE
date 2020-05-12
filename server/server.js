@@ -8,7 +8,7 @@ const { ApolloServer } = require('apollo-server-express');
 const bcrypt = require('bcrypt')
 import { buildContext } from 'graphql-passport';
 const cors = require('cors')
-const uuid = require('uuid')
+import { v4 as uuidv4 } from 'uuid';
 
 const typeDefs = require('./models/TypeDefsGQL.js')
 const resolvers = require('./models/ResolversGQL.js')
@@ -43,7 +43,7 @@ dotenv.config()
 const app = express();
 
 app.use(session({
-  genid: (req) => uuid(),
+  genid: (req) => uuidv4(),
   secret: SECRET_KEY,
   resave: false, 
   saveUninitialized: false 
