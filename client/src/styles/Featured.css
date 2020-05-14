@@ -1,0 +1,73 @@
+.header__section {
+    position: relative;
+    padding: 5vw;
+    height: 100vh;
+    /* background-color: var(--main-bg-color); */
+}
+.header__hero {
+    /* position: absolute;
+    display: block; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -1;
+}
+
+.header__hero:before {
+    content: '';
+    position: absolute;
+    /* height: 100vh; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(73,81,92,0.6) 0%,
+        rgba(73,81,92,0.6) 60%,
+        rgba(73,81,92,1) 100%);
+}
+
+.header__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 580px;
+}
+
+.header__info {
+    max-width: 500px;
+    margin-top: 40px;
+}
+
+.header__title {
+    margin: 0 0 10px 0;
+    font-size: 65px;
+    color: whitesmoke;
+}
+
+.header__subtitle {
+    font-family: 'East Sea Dokdo', cursive;
+    font-size: 35px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 25px 0;
+}
+
+.header__shortDescription {
+    font-family: 'Play', sans-serif;    
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 15px 0;
+}

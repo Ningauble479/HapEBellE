@@ -1,0 +1,15 @@
+.top-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+top: 0;
+background-color: var(--main-bg-color);
+color: var(--text-color)
+}
+
+@media (max-width: 769px) {
+    .top-nav {
+        display: none; 
+    }
+}
