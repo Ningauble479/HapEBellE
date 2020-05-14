@@ -1,0 +1,99 @@
+// .desk-nav-containter {
+//     display: flex;
+//     flex-direction: row;
+// }
+
+.desk-main-header {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 90px;
+    width: 100vw;
+    padding: 0 10vw;
+    color: black;
+    z-index: 1;
+    transition: .4s ease-out;
+
+    
+    .logo {
+        // justify-content: flex-start;
+        // align-items: left;
+        margin-right: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        text-transform: uppercase;
+    }
+
+    .desk-nav-links {
+        display: flex;
+        list-style: none;
+
+        .desk-nav-link {
+
+
+            a {
+                margin: .2rem;
+                padding: 1rem .5rem;
+            }
+            a:hover {
+                background: rgba(255,255,255,0.2);
+            }
+        }
+    }
+
+    
+
+    .desk-menu-icon {
+        display: inline-block;
+        position: relative;
+        padding: 26px 10px;
+        cursor: pointer;
+        z-index: 1;
+        // display: none;
+
+        &__line {
+            display: block;
+            position: relative;
+            background: black;
+            height: 2px;
+            width: 20px;
+            border-radius: 4px;
+
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-radius: 4px;
+                background: black;
+            }
+            &::before {
+                transform: translateY(-5px);
+            }
+            &::after {
+                transform: translateY(5px);
+            }
+        }
+    }
+    .desk-menu-btn {
+        display: none;
+    }
+
+    &.scrolled {
+        height: 50px;
+        background: rgba(0,0,0,0.9);
+        color: #fff;
+
+        .desk-menu-icon {
+            &__line, 
+            &__line::before,
+            &__line::after {
+                background: white;
+            }
+        }
+    }
+}
