@@ -4,7 +4,7 @@ import { Grid, Box, Typography } from '@material-ui/core'
 
 export default () => {
     return(
-        <Grid container>
+        <Grid container >
             <Box>
                 <Typography variant='h1'>
                     Test
