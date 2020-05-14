@@ -36,8 +36,11 @@ export default function ButtonAppBar() {
             <Link className='linkCleaner' to='/'>RoshiBox</Link>
           </Typography>
 
-          <Typography variant="h6" >
+          <Typography variant="h6" style={{paddingRight: '50px'}}>
             <Link className='linkCleaner' to='/recipes'>Recipes</Link>
+          </Typography>
+          <Typography variant="h6" >
+            <Link className='linkCleaner' to='/Boxes'>Shop Boxes</Link>
           </Typography>
           </Grid>
           <Button color="inherit">Login</Button>

@@ -7,6 +7,7 @@ import TopNavbar from './Components/TopNavbar'
 import RecipeSearch from './strapiStructures/recipeSearcher'
 import RecipeStructure from './strapiStructures/recipePage'
 import LandingPage from './Components/LandingPage'
+import BoxPage from './PageStructure/Boxes'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route path='/recipes/:id' component={RecipeStructure}/>
         <Route exact path='/recipes'>
           <RecipeSearch/>
+        </Route>
+        <Route exact path='/boxes'>
+          <BoxPage/>
         </Route>
     </Grid>
   );
