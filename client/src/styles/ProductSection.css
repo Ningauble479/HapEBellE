@@ -1,6 +1,19 @@
 .product-main {
+    position: relative;
     color: #49515E;
     background: whitesmoke;
     height: 100vh;
     font-size: 200px;
+}
+
+.grass-bottom {
+    background-image: url(../Images/grass_PNG-1.png);
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 34%;
+    top: 0;
+    /* z-index: -1; */
 }

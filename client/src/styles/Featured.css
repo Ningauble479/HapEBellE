@@ -1,7 +1,10 @@
 .header__section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     position: relative;
-    padding: 5vw;
+    padding: 3vh 10vw;
     height: 100vh;
+    width: 100vw;
     /* background-color: var(--main-bg-color); */
 }
 .header__hero {
@@ -20,7 +23,7 @@
 }
 
 .header__hero:before {
-    content: '';
+    content: "";
     position: absolute;
     /* height: 100vh; */
     top: 0;
@@ -28,10 +31,11 @@
     bottom: 0;
     left: 0;
     background-image: linear-gradient(
-        to bottom, 
-        rgba(73,81,92,0.6) 0%,
-        rgba(73,81,92,0.6) 60%,
-        rgba(73,81,92,1) 100%);
+        to bottom,
+        rgba(230, 211, 167, 0.6) 0%,
+        rgba(230, 211, 167, 0.2) 60%,
+        rgba(230, 211, 167, 0.7) 100%
+    );
 }
 
 .header__content {
@@ -53,7 +57,7 @@
 }
 
 .header__subtitle {
-    font-family: 'East Sea Dokdo', cursive;
+    font-family: "East Sea Dokdo", cursive;
     font-size: 35px;
     line-height: 20px;
     font-weight: 300;
@@ -62,10 +66,40 @@
 }
 
 .header__shortDescription {
-    font-family: 'Play', sans-serif;    
+    font-family: "Play", sans-serif;
     font-size: 18px;
     line-height: 24px;
     font-weight: 300;
     color: #fff;
     margin: 0 0 15px 0;
+}
+
+.grass-top {
+    background-image: url(../Images/grass_PNG-2.png);
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 34%;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .header__section {
+        grid-template-columns: 1fr;
+        /* background-color: var(--main-bg-color); */
+    }
+    .header__title {
+        font-size: 30px;
+    }
+
+    .header__shortDescription {
+        font-size: 15px;
+    }
 }

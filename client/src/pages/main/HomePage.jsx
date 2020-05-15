@@ -6,13 +6,22 @@ import React from 'react';
 // import TopAdBar from '../../Components/TopAdBar'
 import HeroSection from '../main/HeroSection'
 import ProductSection from '../main/productSection'
+import TopAdBar from '../../Components/TopAdBar'
+import Navbar from '../../Components/Navbar/Navbar'
+import MobileNav from '../../Components/MobileNav/mobileNav'
+import Precard from '../main/PrecardSection'
+
 import '../../styles/HomePage.css'
 
 function HomePage() {
   return (
     <div className="homeStyle">
-<HeroSection />
-<ProductSection />
+      <TopAdBar />
+      <MobileNav />
+      <Navbar />
+      <HeroSection />
+      <ProductSection />
+      <Precard />
     </div>
   );
 }

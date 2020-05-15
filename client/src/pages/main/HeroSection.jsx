@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../../styles/Featured.css'
 import bgImg from '../../Images/heroImg.png'
 import {Route} from 'react-router-dom'
+import HeaderCarousel from './HeaderCarousel'
 
 
 
@@ -20,7 +21,11 @@ function HeroSection () {
 
     </div>
   </div>
+  <HeaderCarousel />
+  <div className="grass-top"></div>
 </div>
+
+
 );
 }
 

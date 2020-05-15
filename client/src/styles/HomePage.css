@@ -1,3 +1,6 @@
-/* .homeStyle {
-    position: relative;
-} */
+.homeStyle {
+    width: 100vw;
+    height: auto;
+    /* position: relative; */
+}
+
