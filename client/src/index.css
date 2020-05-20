@@ -5,10 +5,10 @@
 
 
 :root {
-  --main-bg-color: #49515E;
+  --main-bg-color: whitesmoke;
   --primary-color: #476E76;
   --secondary--color: #f5c42f;
-  --text-color: #E6D3A7;
+  --text-color: #49515E;
 }
 
 *{
