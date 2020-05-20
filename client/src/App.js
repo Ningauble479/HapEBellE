@@ -4,7 +4,7 @@ import Backdrop from './Components/DeskNav/SideDrawer/Backdrop'
 import { Grid } from '@material-ui/core'
 import './App.scss';
 import {Route} from 'react-router-dom'
-// import TopNavbar from './Components/TopNavbar'
+import TopNavbar from './Components/TopNavbar'
 import TopAdBar from './Components/TopAdBar'
 import Nav from './Components/DeskNav/Nav'
 import Navbar from './Components/Navbar/Navbar'
@@ -58,10 +58,12 @@ class App extends Component {
     return (
 
 <Grid container style={{width: '100%', height: '100%'}} wrap='nowrap' direction='column'>
-<TopAdBar />
+{/* <TopAdBar />
 <MobileNav />
-<Navbar />
+<Navbar /> */}
+
 {/* <Route exact path='/' component={LandingPage}/> */}
+        <TopNavbar />
         <Route exact path component={HomePage}/>
         <Route path='/recipes/:id' component={RecipeStructure}/>
         <Route exact path='/recipes'>

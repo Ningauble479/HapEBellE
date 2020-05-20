@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"cd server && nodemon -r esm server.js\" \"cd client && npm start\" \"cd strapi && npm run develop\""
+    "dev": "concurrently \"cd strapi && npm run develop\" \"cd server && nodemon -r esm server.js\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",

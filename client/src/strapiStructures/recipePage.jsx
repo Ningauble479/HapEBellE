@@ -7,7 +7,6 @@ import ONE_RECIPE from "../StrapiQueries/OneRecipeQuery";
 
 
 
-
 const cardStyle = {
     marginTop: '50px',
     height: '300px',

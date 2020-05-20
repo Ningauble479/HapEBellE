@@ -4,7 +4,7 @@ const RECIPE_QUERY = gql`
 query OneRecipe($id: ID!){
 	recipe(id: $id) {
 	    Recipe_Name
-        Recipe_Time
+        RecipeTime
         Feeds
         id
         MeatTypes
