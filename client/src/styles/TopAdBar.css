@@ -3,13 +3,14 @@
     display: flex;
     justify-content: center;
     position: absolute;
-top: 0;
-background-color: var(--main-bg-color);
-color: var(--text-color)
+    top: 0;
+    background-color: #49515e;
+    color: #e6d3a7;
+    text-transform: capitalize;
 }
 
 @media (max-width: 769px) {
     .top-nav {
-        display: none; 
+        display: none;
     }
 }

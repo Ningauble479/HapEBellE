@@ -35,26 +35,10 @@ import HomePage from './pages/main/HomePage'
 
 
 class App extends Component {
-  state = {
-    sideDrawerOpen: false
-  };
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
 
   render() {
-    let backdrop;
 
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />
-    }
     return (
 
 <Grid container style={{width: '100%', height: '100%'}} wrap='nowrap' direction='column'>
@@ -78,3 +62,14 @@ class App extends Component {
 }
 
 export default App;
+
+
+{/* <div className="app">
+
+        <Route exact path='/' component={HomePage} />
+        <Route path='/recipes/:id' component={RecipeStructure} />
+        <Route exact path='/recipes'>
+          <RecipeSearch />
+        </Route>
+
+      </div> */}
