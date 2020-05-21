@@ -1,0 +1,117 @@
+
+
+
+
+.footer__section {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr); */
+    position: relative;
+    padding: 3vh 10vw;
+    height: 50vh;
+    width: 100vw;
+    /* display: grid;
+    flex-direction: column; */
+    /* background-color: var(--main-bg-color); */
+}
+.footer__hero {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -1;
+}
+
+.footer__hero:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.6) 0%,
+        rgba(10,10,10,0.6) 60%,
+        rgba(10,10,10,1) 100%
+    );
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.link__items {
+    list-style: none;
+}
+
+/* .footer__info {
+    max-width: 500px;
+    margin-top: 40px;
+} */
+
+.footer__title {
+    margin: 0 0 10px 0;
+    font-size: 65px;
+    color: whitesmoke;
+}
+
+.footer__subtitle {
+    font-family: "East Sea Dokdo", cursive;
+    font-size: 35px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 25px 0;
+}
+
+.footer__shortDescription {
+    font-family: "Play", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 15px 0;
+}
+
+/* .grass-top {
+    background-image: url(../Images/grass_PNG-2.png);
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 34%;
+    bottom: 0;
+    z-index: -1;
+} */
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .footer__content {
+        flex-direction: column;
+    }
+
+    .footer__hero {
+        height: 100vh;
+    }
+
+    .footer__title {
+        margin: 0 0 10px 0;
+        font-size: 30px;
+        color: whitesmoke;
+    }
+}

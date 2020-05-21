@@ -1,0 +1,150 @@
+.product-main {
+    position: relative;
+    color: #49515e;
+    background: whitesmoke;
+    height: 130vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-areas:
+        ". . . . two two . . . . "
+        ". one one  . two two . three three ."
+        ". one one  . two two . three three ."
+        ". one one  . two two . three three ."
+        ". one one  . two two . three three ."
+        ". one one  . two two . three three ."
+        ". one one  . . . . three three ."
+        ". . . . . . . . . . "
+        ". . . . . . . . . . "
+        ". . . . . . . . . . "
+        ". . . . . . . . . . "
+        ". . . . . . . . . . ";
+}
+
+.first-svg {
+    /* background: red; */
+    border: solid red 1px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.svg__one {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+.svg__two {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+.card-one {
+    position: relative;
+    z-index: 0;
+    grid-area: one;
+    width: 500px;
+    height: 600px;
+}
+
+.card-two {
+    position: relative;
+    z-index: 0;
+    grid-area: two;
+    width: 500px;
+    height: 600px;
+}
+.card-three {
+    position: relative;
+    z-index: 0;
+    grid-area: three;
+    width: 500px;
+    height: 600px;
+}
+
+.thecard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.thecard:hover{
+transform: rotateY(180deg);
+}
+
+.thefront {
+    border-radius: 20px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #a7ba97;
+    color: #333;
+    box-shadow: 50px 20px 20px #49515E;
+}
+
+.theback {
+    border-radius: 20px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fafafa;
+    color: #333;
+    transform: rotateY(180deg);
+    box-shadow: 50px 20px 20px #49515E;
+
+}
+
+@media screen and (max-width: 768px) {
+    .product-main {
+        height: 130vh;
+    padding-bottom: 20px;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 319px);
+    grid-template-areas:
+        "one "
+        "two "
+        "three "
+        ".";
+    }
+    .card-one {
+        justify-self: center;
+        height: 300px;
+        width: 300px;
+    }
+    .card-two {
+        justify-self: center;
+        height: 300px;
+        width: 300px;
+    }
+    .card-three {
+        justify-self: center;
+        height: 300px;
+        width: 300px;
+    }
+
+    .product-page-header {
+    }
+    .product-page-header h1 {
+        font-size: 30px;
+        color: #49515e;
+    }
+
+    .product-page-header h3 {
+        font-size: 18px;
+        color: whitesmoke;
+    }
+
+    .svg__one {
+        display: none;
+    }
+}

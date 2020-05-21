@@ -1,0 +1,183 @@
+.header__section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 90vh 1fr;
+    grid-template-areas: 
+    "a b"
+    "c c";
+    position: relative;
+    padding: 3vh 10vw;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: var(--main-bg-color); */
+}
+.header__hero {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -1;
+}
+
+.header__hero:before {
+    content: "";
+    position: absolute;
+    /* height: 100vh; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(230, 211, 167, 0.6) 0%,
+        rgba(230, 211, 167, 0.2) 60%,
+        rgba(230, 211, 167, 0.7) 100%
+    );
+}
+
+.btn__med {
+border-radius: 10px;
+font-size: 30px;
+border: none;
+background: #a7ba97;
+color: whitesmoke;
+padding: 20px;
+}
+
+.header__content {
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 580px;
+}
+
+.header__info {
+    max-width: 500px;
+    margin-top: 40px;
+}
+
+.header__title {
+    margin: 0 0 10px 0;
+    font-size: 65px;
+    color: whitesmoke;
+}
+
+.header__subtitle {
+    font-family: "East Sea Dokdo", cursive;
+    font-size: 35px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 25px 0;
+}
+
+.header__shortDescription {
+    font-family: "Play", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 15px 0;
+}
+
+.grass-top {
+    background-image: url(../Images/grass_PNG-2.png);
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 34%;
+    bottom: 0;
+    z-index: -1;
+}
+
+.grass-bottom {
+    background-image: url(../Images/grass_PNG-1.png);
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 34%;
+    bottom: -34%;
+}
+
+.header__carousel {
+    grid-area: b;
+}
+
+.pre-card-section {
+    grid-area: c;
+    margin: auto;
+    border-radius: 10px;
+    flex-direction: column;
+    background: rgba(74, 81, 94, 0.253);
+    /* width: 80%; */
+    height: 180px;
+    /* z-index: 2; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    top: -8%;
+    z-index: 0;
+    right: 10%;
+    padding-bottom: 23px;
+    padding: 33px;
+}
+
+.pre-card__title {
+font-size: 90px;
+color: #4A515E;
+}
+.pre-card__p {
+font-size: 30px;
+color: whitesmoke;
+}
+
+
+h1 {
+    text-transform: capitalize;
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    .header__section {
+        grid-template-columns: 1fr;
+        /* background-color: var(--main-bg-color); */
+    }
+    .header__title {
+        font-size: 30px;
+    }
+
+    .header__shortDescription {
+        font-size: 15px;
+    }
+
+    .pre-card-section {
+        text-align: center;
+        width: 100%;
+    }
+
+    .pre-card__title {
+        font-size: 30px;
+        }
+        .pre-card__p {
+        font-size: 18px;
+        }
+
+    .grass-bottom {
+        bottom: -32%;
+    }
+    
+}
