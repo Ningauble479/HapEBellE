@@ -1,5 +1,6 @@
 const User = require('./mongooseModels');
 const { PubSub } = require('apollo-server');
+const bcrypt = require('bcrypt')
 
 //bcrypt stuff
 
@@ -15,8 +16,10 @@ const resolvers = {
             let data = await User.find().exec()
             return data
         },
-        currentUser: (parent, args, context) => {
+        currentUser: async (parent, args, context) => {
             let data = context.req.user
+            console.log(context.req.user)
+            console.log(context.getUser())
             return data
         },
 
@@ -40,10 +43,8 @@ const resolvers = {
         },
         login: async (parent, { email, password }, context) => {
             const { user } = await context.authenticate('graphql-local', { email, password });
- 
-            console.log(context.login)
             context.login(user);
-            return  {user}
+            return {user}
         },
         signup: async (parent, {userName, email, password }, context) => {
           console.log({email: email})

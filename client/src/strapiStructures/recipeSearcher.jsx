@@ -1,10 +1,9 @@
 import React from 'react'
 import { Grid, Box, TextField, Radio, FormControl, RadioGroup, FormLabel, FormControlLabel, FormGroup, Checkbox } from '@material-ui/core'
 import { useState } from 'react'
-import { ALL_RECIPE_QUERY, MODIFIED_RECIPE_QUERY, NAME_RECIPE_QUERY, MEAT_RECIPE_QUERY, TIME_RECIPE_QUERY, NAME_AND_TIME_RECIPE_QUERY, NAME_AND_MEAT_RECIPE_QUERY, NAME_TIME_AND_MEAT_RECIPE_QUERY } from "../StrapiQueries/RecipeQuery";
+import { MODIFIED_RECIPE_QUERY } from "../StrapiQueries/RecipeQuery";
 import Query from "../StrapiQueries/QueryBuilder";
 import RecipeCard from './RecipeCard'
-import moment from 'moment'
 
 
 function useForceUpdate(){
@@ -26,122 +25,6 @@ function QueryDecider(props) {
                      );
                  }}
              </Query>)
-    // if ((props.name === null || props.name === "") && (props.meat === null || props.meat === "" ) && (props.times === null || props.times.length === 0) ) {
-    //     console.log(1)
-    //     return (
-    //         <Query query={ALL_RECIPE_QUERY} id={null}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>
-    //     )
-    // }
-    // else if((props.name !== null && props.name !== "") && (props.times !== null && props.times.length !== 0)){
-        
-    //     return(
-    //         <Query query={NAME_AND_TIME_RECIPE_QUERY} name={props.name} times={props.times}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>
-    //     )
-
-    // }
-    // else if((props.name !== null && props.name !== "") && (props.meat !== null && props.meat !== "")) {
-    //     return (
-    //         <Query query={NAME_AND_MEAT_RECIPE_QUERY} name={props.name} meat={props.meat}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>
-    //     )
-    // }
-    // else if ((props.name !== null && props.name !== "") && (props.meat !== null && props.meat !== "") && (props.times !== null && props.times.length !== 0)){
-    //     return(
-    //     <Query query={NAME_TIME_AND_MEAT_RECIPE_QUERY} name={props.name} meat={props.meat} times={props.times}>
-    //         {({ data: { recipes } }) => {
-    //             return (
-    //                 recipes.map((recipe, i) => {
-    //                     return (
-    //                         <RecipeCard recipe={recipe} />
-    //                     );
-    //                 })
-    //             );
-    //         }}
-    //     </Query>)
-    // }
-    // else if ((props.name === null || props.name === "") && (props.times === null || props.times.length === 0)) {
-    //     console.log(2)
-    //     return (
-    //         <Query query={MEAT_RECIPE_QUERY} meat={props.meat}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>
-    //     )
-    // }
-    // else if ((props.meat === null || props.meat === "" ) && (props.times === null || props.times.length === 0)) {
-    //     console.log(3)
-    //     return (
-    //         <Query query={NAME_RECIPE_QUERY} name={props.name}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>)
-    // }
-    // else if ((props.meat === "" || props.meat === null) && (props.name === null || props.name === "")) {
-    //     console.log(4)
-    //     return(
-    //     <Query query={TIME_RECIPE_QUERY} times={props.times}>
-    //             {({ data: { recipes } }) => {
-    //                 return (
-    //                     recipes.map((recipe, i) => {
-    //                         return (
-    //                             <RecipeCard recipe={recipe} />
-    //                         );
-    //                     })
-    //                 );
-    //             }}
-    //         </Query>
-    // )}
-    // else if (props.updating === true){
-    //     return(<h1>updating</h1>)
-    // }
-    // else {
-    //     return (
-    //         <h1>Error</h1>
-    //     )
-    // }
 }
 
 

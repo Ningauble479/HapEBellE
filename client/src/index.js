@@ -4,27 +4,62 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from "apollo-boost";
 
-import { ApolloClient } from "apollo-client";  
-import { InMemoryCache } from "apollo-cache-inmemory";  
-import { HttpLink } from "apollo-link-http";
+
+// import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+
+
+
+//All the mutations goes here
+const mutations = {
+  updateUser: (_, variables, { cache }) => {
+    //query existing data
+    //Calculate new counter value
+    const newID = variables.id;
+    const newEmail = variables.email;
+    const newUsername = variables.username
+    cache.writeData({ 
+      data: { 
+          myid: newID,
+          myemail: newEmail,
+          myusername: newUsername
+      } 
+    });
+    return null; //best practices
+  }
+}
+
 
 const cache = new InMemoryCache();  
-const link = new HttpLink({
-  uri: `http://localhost:1337/graphql`
-});
 const client = new ApolloClient({  
+  uri: `http://localhost:3333/graphql`,
   cache,
-  link
+  resolvers: {
+    Mutation: mutations
+ },
+  credentials: 'include'
 });
+
+const initialState = {
+    myid: null,
+    myemail: null,
+    myusername: null
+ }
+ cache.writeData({  data: initialState });
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

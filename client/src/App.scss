@@ -1,0 +1,32 @@
+/* .app {
+  height: 100%;
+  border: solid green 4px;
+} */
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+.linkCleaner {
+  text-decoration: none;
+  color: inherit
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ************Mobile******************** */
+
+/* @media screen and (max-width: 768px) {
+  .MobileNav {
+    display: none;
+  }
+} */

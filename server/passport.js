@@ -10,6 +10,7 @@ passport.use(new GraphQLLocalStrategy(
     usernameField: "email"
   },
   (email, password, done) => {
+    console.log('ur here')
     console.log(email)
     // When a user tries to sign in this code runs
     User.findOne({email: email}).then( async (dbusers)=> {
@@ -25,9 +26,9 @@ passport.use(new GraphQLLocalStrategy(
       else {
         const match = await bcrypt.compare(password, dbusers.password)
           if(match === true){
-            console.log(dbusers)
+            console.log({LoggingIn: dbusers})
             done(null, dbusers);
-            return;
+            return
           }
           else {
             console.log('2')

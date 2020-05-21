@@ -24,17 +24,6 @@ const WS_PORT = 8888;
 
 initPassport({ User });
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ req, res }) => buildContext({ req, res, User }),
-    playground: {
-      settings: {
-        'request.credentials': 'same-origin',
-      },
-    },
-  });
-
 
 // dotEnv config.
 dotenv.config()
@@ -80,6 +69,17 @@ let DB = mongoose.connection;
 //Starting the db server
 DB.once('open', () => console.log('connected to the database'));
 DB.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req, res }) => buildContext({ req, res, User }),
+  playground: {
+    settings: {
+      'request.credentials': 'same-origin',
+    },
+  },
+});
 
 //Applying express to Apollo
 server.applyMiddleware({ app, cors: false });
