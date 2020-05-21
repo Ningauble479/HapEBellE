@@ -5,27 +5,51 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from "apollo-boost";  
-import { HttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";  
-import typeDefs from './Graphql/typedefs'
-import resolvers from './Graphql/resolvers'
+import ApolloClient from "apollo-boost";
+
+
+// import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+
+
+
+//All the mutations goes here
+const mutations = {
+  updateUser: (_, variables, { cache }) => {
+    //query existing data
+    //Calculate new counter value
+    const newID = variables.id;
+    const newEmail = variables.email;
+    const newUsername = variables.username
+    cache.writeData({ 
+      data: { 
+          myid: newID,
+          myemail: newEmail,
+          myusername: newUsername
+      } 
+    });
+    return null; //best practices
+  }
+}
 
 
 const cache = new InMemoryCache();  
 const client = new ApolloClient({  
   uri: `http://localhost:3333/graphql`,
   cache,
-  typeDefs,
-  resolvers,
+  resolvers: {
+    Mutation: mutations
+ },
   credentials: 'include'
 });
-cache.writeData({
-  data: {
-    myId: '88888'
-  }
-});
 
+const initialState = {
+    myid: null,
+    myemail: null,
+    myusername: null
+ }
+ cache.writeData({  data: initialState });
 
 
 

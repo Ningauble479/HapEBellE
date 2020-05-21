@@ -12,7 +12,6 @@ extend type Query {
   isLoggedIn: Boolean!
   bigChungus: Boolean!
   user: User
-  myID: ID!
 }
 
 extend type AuthPayload {

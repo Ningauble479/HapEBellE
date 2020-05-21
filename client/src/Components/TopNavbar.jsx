@@ -8,10 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
 import { Grid, Modal, Box } from '@material-ui/core';
-import { gql } from 'apollo-boost'
-import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import CreateAccount from './createAccount'
-import TestBcrypt from './testbcryot'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,12 +24,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SHOW_USER = {query: gql`
-      query myID {
-        myId
-      }
-  
-`}
+const SHOW_USER = gql`
+  query getID{
+      myid @client
+      myemail @client
+      myusername @client
+  }
+`
+
+const UPDATE_USER = gql`
+  mutation updateUser($id: ID!, $email: String!, $username: String!) {
+    updateUser(id: $id, email: $email, username: $username) @client
+  }
+`;
 
 const CHECK_USER = gql`
   query currentUser {
@@ -63,31 +69,48 @@ mutation Login($email: String!, $password: String!){
 }
 `;
 
+function ShowUser(user){
+  const {data} = useQuery(SHOW_USER);
+
+  return(
+  <React.Fragment>
+  <Typography variant="h6" style={{ paddingRight: '50px' }}>
+            { data === null || data === undefined ?
+              (null)
+              :
+            `Welcome ${data.myusername}`
+            }
+            </Typography>
+  </React.Fragment>
+  )
+}
+
 export default function ButtonAppBar() {
 
-  const client = useApolloClient()
-
-  const {data} = useQuery(CHECK_USER)
-  const [setUser] = useMutation(SET_USER)
-  if(data !== null && data !== undefined){
-    if(data.currentUser != null && data.currentUser != undefined){
-    console.log('Should Be Writing')
-    console.log(data.currentUser._id)
-    client.writeQuery({data: {myId: '84746174'}})
-  }
-  }
-  const {userNow} = client.readQuery(SHOW_USER)
-  setTimeout(()=>{
-  console.log({show:userNow})}
-  , 1000)
-  
   const classes = useStyles();
   let [loggedIn, checkLogin] = useState(false)
   let [showModal, handleModal] = useState(false)
   const [login] = useMutation(LOGIN)
   let [email, changeEmail] = useState(null)
   let [password, changePassword] = useState(null)
-
+  const {data} = useQuery(CHECK_USER)
+  const [update] = useMutation(UPDATE_USER)
+  const {theUser} = useQuery(SHOW_USER);
+  useEffect(()=>{
+    if(data !== null && data !== undefined){
+      if(data.currentUser != null && data.currentUser != undefined){
+        console.log(data)
+      update({ variables: { 
+        id: data.currentUser._id,
+        email: data.currentUser.email,
+        username: data.currentUser.userName
+       }})
+      checkLogin(true)
+    }
+  }
+  },[data])
+  // const [setUser] = useMutation(SET_USER)
+  console.log({yesdad: theUser})
 
 
   return (
@@ -98,6 +121,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Grid container className={classes.title}>
+            <ShowUser/>
             <Typography variant="h6" style={{ paddingRight: '50px' }}>
               <Link className='linkCleaner' to='/'>RoshiBox</Link>
             </Typography>
@@ -131,7 +155,7 @@ export default function ButtonAppBar() {
                   <button type="submit">Login</button>
                 </form>
                 <CreateAccount />
-                <TestBcrypt/>
+                <ShowUser user={data}/>
               </Box>
             </Grid>
           </Modal>
