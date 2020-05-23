@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from "apollo-boost";
+import GQLCHECK from './Graphql/checks'
 
 
 // import { ApolloClient } from 'apollo-client';
@@ -26,20 +27,29 @@ const mutations = {
       data: { 
           myid: newID,
           myemail: newEmail,
-          myusername: newUsername
-      } 
+          myusername: newUsername,
+          isLoggedIn: true
+      }
     });
+    console.log(variables)
     return null; //best practices
+  }
+}
+
+const query = {
+  myUser: (_, variables, {cache}) => {
+    console.log('itrann')
   }
 }
 
 
 const cache = new InMemoryCache();  
 const client = new ApolloClient({  
-  uri: `http://localhost:3333/graphql`,
+  uri: `/graphql`,
   cache,
   resolvers: {
-    Mutation: mutations
+    Mutation: mutations,
+    Query: query
  },
   credentials: 'include'
 });
@@ -47,7 +57,8 @@ const client = new ApolloClient({
 const initialState = {
     myid: null,
     myemail: null,
-    myusername: null
+    myusername: null,
+    isLoggedIn: false
  }
  cache.writeData({  data: initialState });
 
@@ -56,8 +67,10 @@ const initialState = {
 
 ReactDOM.render(
   <React.StrictMode>
+    
     <Router>
       <ApolloProvider client={client}>
+        <GQLCHECK/>
         <App />
       </ApolloProvider>
     </Router>
