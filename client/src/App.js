@@ -41,30 +41,7 @@ class App extends Component {
 
     return (
 
-<Grid container style={{width: '100%', height: '100%'}} wrap='nowrap' direction='column'>
-{/* <TopAdBar />
-<MobileNav />
-<Navbar /> */}
-
-{/* <Route exact path='/' component={LandingPage}/> */}
-        <TopNavbar />
-        <Route exact path component={HomePage}/>
-        <Route path='/recipes/:id' component={RecipeStructure}/>
-        <Route exact path='/recipes'>
-          <RecipeSearch/>
-        </Route>
-        <Route exact path='/boxes'>
-          {/* <BoxPage/> */}
-        </Route>
-</Grid>
-    );
-  }
-}
-
-export default App;
-
-
-{/* <div className="app">
+      <div className="app">
 
         <Route exact path='/' component={HomePage} />
         <Route path='/recipes/:id' component={RecipeStructure} />
@@ -72,4 +49,29 @@ export default App;
           <RecipeSearch />
         </Route>
 
-      </div> */}
+      </div>
+
+    );
+  }
+}
+
+export default App;
+
+
+
+//<Grid container style={{width: '100%', height: '100%'}} wrap='nowrap' direction='column'>
+//{/* <TopAdBar />
+//<MobileNav />
+//<Navbar /> */}
+//
+//{/* <Route exact path='/' component={LandingPage}/> */}
+//        <TopNavbar />
+//        <Route exact path component={HomePage}/>
+//        <Route path='/recipes/:id' component={RecipeStructure}/>
+//        <Route exact path='/recipes'>
+//          <RecipeSearch/>
+//        </Route>
+//        <Route exact path='/boxes'>
+//          {/* <BoxPage/> */}
+//        </Route>
+//</Grid>
