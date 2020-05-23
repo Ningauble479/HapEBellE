@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import {gql} from 'apollo-boost'
 import { useMutation } from 'react-apollo';
 
