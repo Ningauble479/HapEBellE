@@ -33,6 +33,16 @@ const mutations = {
     });
     console.log(variables)
     return null; //best practices
+  },
+  setLoggedIn: (_, variables, {cache}) => {
+    cache.writeData({ 
+      data: {
+          myid: null,
+          myemail: null,
+          myusername: null,
+          isLoggedIn: false
+      }
+    });
   }
 }
 

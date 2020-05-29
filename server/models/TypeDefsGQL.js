@@ -8,6 +8,7 @@ const typeDefs = gql`
         _id: ID!
         userName: String
         email: String
+        guest: Boolean
     }
 
     type Metadatas {
@@ -27,23 +28,37 @@ const typeDefs = gql`
         description: String
         metadata: Metadatas
         images: [String]
+        name: String,
+        amount: Int
     }
 
     type AuthPayload {
         user: User
     }
+
+    type Finished {
+        finished: Boolean
+    }
+
     type Query {
         getUsers: [User]
         currentUser: User
-        getProduct (active: Boolean, where: String, topBox: Int): [Product]
+        getProduct (
+            active: Boolean,
+            topBox: Int,
+            id: String): [Product]
         getOneProduct(id: String!): [Product]
+        getCart(guestId: String): [Product]
+        getCheckoutSession(id: String!): String
     }
     type Mutation {
         updateUser(_id: ID!, userName: String!, email: String!): User
         login(email: String!, password: String!): AuthPayload
         signup(userName: String!, email: String!, password: String!) : User
         logout: Boolean
-        
+        addToCart(id: String, amount: Int, price: Int, guestID: String): User
+        checkout(guestID: String): String
+        emptyCart(guestID: String): Boolean
     }
 `;
 

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {useMutation, useQuery} from '@apollo/react-hooks'
-import {LOGIN, LOGGED_IN, LOGOUT} from '../../Graphql/queries/profileQueries'
+import {LOGIN, LOGGED_IN, LOGOUT, CHECK_USER} from '../../Graphql/queries/profileQueries'
+import { GET_CART } from '../../Graphql/queries/productQueries'
 import Box from '../../Images/boxie.png';
 // import logo from '../../reuse/images/HP-Logomark.png'
 import './scss/main.scss';
 import './navbar.css';
 import { Button, Box as MUIBox, Grid, Input, InputLabel, FormControl, FormHelperText } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal/index.js'
+import ShoppingCart from '../ShoppingCart/index'
 
 const Navbar = props => {
 
@@ -23,21 +25,23 @@ const Navbar = props => {
     //     }
     // })
 
-    let[ open, handleOpen ] = useState(false)
+    let [ open, handleOpen ] = useState(false)
+    let [ openCart, handleCartOpen ] = useState(false)
 
     const {data} = useQuery(LOGGED_IN);
     console.log(data)
 
-    const [login] = useMutation(LOGIN)
+    const [login] = useMutation(LOGIN, {refetchQueries: [{query: CHECK_USER}, {query: GET_CART}]})
     let [loggedIn, handleLoggedIn] = useState(false)
     useEffect(()=>{handleLoggedIn(data.isLoggedIn)},[data])
     let [email, changeEmail] = useState(null)
     let [password, changePassword] = useState(null)
-    let [logout] = useMutation(LOGOUT)
+    let [logout] = useMutation(LOGOUT, {refetchQueries: [{query: LOGGED_IN}]})
 
     return (
 
         <nav className="desk-nav-containter">
+            <ShoppingCart openCart={openCart} handleCartOpen={handleCartOpen}/>
             <Modal open={open} style={{display: 'flex', justifyContent:'center', alignContent:'center', height:'100vh'}} onEscapeKeyDown={()=>{handleOpen(false)}} onBackdropClick={()=>{handleOpen(false)}}>
                 <Grid style={{width:"50vw", height:"50vh", alignSelf:'center'}} container justify='center' alignItems='center'>
                     <MUIBox width='50vw' height='50vh' bgcolor='white' display='flex'>
@@ -70,7 +74,7 @@ const Navbar = props => {
             </Modal>
             <div className="desk-main-header">
                 <div className="logo">
-                    <a href="#">LOGO</a>
+                    <Link to='/'>LOGO</Link>
                 </div>
                 <input
                     className="desk-menu-btn"
@@ -100,6 +104,9 @@ const Navbar = props => {
                     :
                     (<Button variant='outlined' onClick={()=>{handleOpen(true)}}>Login</Button>)
                 }
+                <Button variant='outlined' onClick={()=>{handleCartOpen(true)}}>
+                    Cart
+                </Button>
 
                 <div className="desk-nav-megamenu">
 

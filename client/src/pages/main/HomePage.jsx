@@ -20,11 +20,6 @@ import '../../styles/HomePage.css'
 function HomePage() {
   return (
     <div className="homeStyle">
-      <section className="top-section">
-        <TopAdBar />
-        <MobileNav />
-        <Navbar />
-      </section>
 
 
       <section className="section-one">

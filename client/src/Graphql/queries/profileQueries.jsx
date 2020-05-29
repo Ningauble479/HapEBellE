@@ -55,5 +55,6 @@ export const LOGGED_IN = gql`
 export const LOGOUT = gql`
     mutation logout {
         logout
-    } 
+        setLoggedIn @client
+    }
 `

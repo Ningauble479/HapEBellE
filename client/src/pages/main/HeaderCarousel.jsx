@@ -14,9 +14,9 @@ function HeaderCarousel() {
                 <div className="carousel-strip">
                     <div className="carousel-boxes">
                         {/* <div className="carousel-test"></div> */}
-                            <div className="carousel-box"><TopProductBox topBox={1}/></div>
-                            <div className="carousel-box box-2"><TopProductBox topBox={2}/></div>
-                            <div className="carousel-box"><TopProductBox topBox={3}/></div>
+                            <div className="fakeButton carousel-box"><TopProductBox topBox={1}/></div>
+                            <div className="fakeButton carousel-box box-2"><TopProductBox topBox={2}/></div>
+                            <div className="fakeButton carousel-box"><TopProductBox topBox={3}/></div>
                     </div>
                 </div>
             </div>

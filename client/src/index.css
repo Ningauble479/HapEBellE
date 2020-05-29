@@ -37,3 +37,7 @@ p {
 a {
     text-decoration: none;
 }
+
+.fakeButton:hover {
+  cursor: pointer;
+}
