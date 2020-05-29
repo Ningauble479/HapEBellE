@@ -11,7 +11,15 @@
 
 .linkCleaner {
   text-decoration: none;
-  color: inherit
+  color: black
+}
+
+.linkCleaner:visited {
+  color: black;
+}
+
+.hoverEffect:hover {
+  color: gray
 }
 
 @keyframes App-logo-spin {

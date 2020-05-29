@@ -3,10 +3,25 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt')
 const SALT_WORK_FACTOR = 10;
 
+
+const cartItem = new Schema({
+  id: String,
+  amount: Number,
+  price: Number
+})
+
 const userSchema = new Schema({
+  guest: Boolean,
   userName: String,
-  email: String,
-  password: String
+  email: {
+    type: String, trim: true, index: {
+      unique: true,
+      partialFilterExpression: {email: {$type: "string"}}
+    }
+  },
+  password: String,
+  stripeKey: String,
+  cart: [cartItem]
 });
 
 userSchema.pre('save', function(next) {
