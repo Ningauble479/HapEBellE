@@ -18,6 +18,7 @@ query getProduct($topBox: Int, $id: String) {
       }
       images
       name
+      price
     }
   }
 `
@@ -50,6 +51,7 @@ query getCart($guestId: String) {
     images
     name
     amount
+    price
   }
 }
 `
@@ -69,5 +71,11 @@ query getCheckoutSession($id: String!) {
 export const EMPTY_CART = gql`
 mutation emptyCart($guestID: String) {
   emptyCart(guestID: $guestID)
+}
+`
+
+export const GET_PRICE = gql`
+query getPrice($id: String) {
+  getPrice(id: $id)
 }
 `

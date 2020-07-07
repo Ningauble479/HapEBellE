@@ -30,6 +30,7 @@ const typeDefs = gql`
         images: [String]
         name: String,
         amount: Int
+        price: Int
     }
 
     type AuthPayload {
@@ -41,6 +42,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        getPrice(id: String): Int
         getUsers: [User]
         currentUser: User
         getProduct (

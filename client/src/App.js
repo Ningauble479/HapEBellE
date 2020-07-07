@@ -3,7 +3,7 @@ import SideDrawer from './Components/DeskNav/SideDrawer/SideDrawer'
 import Backdrop from './Components/DeskNav/SideDrawer/Backdrop'
 import { Grid } from '@material-ui/core'
 import './App.scss';
-import {Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 import TopAdBar from './Components/TopAdBar'
 import Nav from './Components/DeskNav/Nav'
 import Navbar from './Components/Navbar/Navbar'
@@ -43,6 +43,9 @@ class App extends Component {
           <BoxPageMain/>
         </Route>
         <Route path='/shop'>
+          <Redirect to='/shop/smallBoxes'/>
+        </Route>
+        <Route path='/shop/:size'>
           <StorePage/>
         </Route>
         <Route path='/success/:id'>
