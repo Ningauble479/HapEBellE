@@ -29,6 +29,14 @@ async function processArray(array, topBox) {
     return stuff;
 }
 
+async function processStripeItem(i, iter, cart){
+    await delay()
+    let prices = await stripe.prices.list({product: i.id})
+    i.price = prices.data[0].unit_amount
+    i.amount = cart[iter].amount
+    return i
+}
+
 
 async function getCartLogic(id) {
     let data = await User.findById(id).exec()
@@ -46,10 +54,10 @@ async function getCartLogic(id) {
         else {
             let items = await stripe.products.list({ ids: ids })
             let iter = 0
-            items.data.forEach((i) => {
-                i.amount = data.cart[iter].amount
+            for(const item of items.data){
+                let fullItem = await processStripeItem(item, iter, data.cart)
                 iter++
-            })
+            }
             return items.data
         }
     }
@@ -58,6 +66,11 @@ async function getCartLogic(id) {
 
 const resolvers = {
     Query: {
+        getPrice: async (parent, args, context) => {
+            if(args.id == null || args.id == undefined){return}
+            let {data} = await stripe.prices.list({product: args.id})
+            return data[0].unit_amount
+        },
         getUsers: async (parent, args, context) => {
             if (!context.req.user) {
                 return null
@@ -93,17 +106,15 @@ const resolvers = {
             return data
         },
         getCart: async (parent, args, context) => {
-            console.log({getCart: args})
+            
             if (!context.req.user) {
                 if (args.guestId) {
                     let data = await getCartLogic(args.guestId)
-                    console.log(data)
                     return data
                 }
                 return
             }
             let data = await getCartLogic(context.req.user._id)
-            console.log(data)
             return data
 
         },
@@ -168,7 +179,6 @@ const resolvers = {
 
             //If user is not logged in and has not created a guest account yet. Guest account ID is stored in localStorage.
             if (context.req.user === null || context.req.user === undefined) {
-                console.log(args)
                 if (args.guestID === null || args.guestID === undefined) {
 
                     let guestUser = new User()
@@ -190,10 +200,7 @@ const resolvers = {
             }
         },
         checkout: async (parent, args, context) => {
-            console.log(context.req.user)
-            console.log(args)
             let id = context.req.user ? context.req.user._id : args.guestID
-            console.log(id)
             let data = await User.findById(id).exec()
             let preCheckout = await prepareCheckoutItems(data.cart)
 

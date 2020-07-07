@@ -8,7 +8,7 @@ import CartItem from './cartItem'
 const stripePromise = loadStripe('pk_test_8sQtLxVeWVeUOvLTJwYlZhnS00G85h0vYD');
 
 export default (props) => {
-    let {data} = useQuery(GET_CART, {variables: {guestId: localStorage.getItem('_id') ? localStorage.getItem('_id') : null}})
+    let {data} = useQuery(GET_CART, {variables: {guestId: localStorage.getItem('_id') ? localStorage.getItem('_id') : null}, pollInterval: 1500})
     let [checkoutMut] = useMutation(CHECKOUT, {variables: {guestID: localStorage.getItem('_id')}, onCompleted: async ({checkout})=>{
         const stripe = await stripePromise
 
@@ -28,12 +28,13 @@ export default (props) => {
         >
             <Grid
             container
+            direction='column'
             style={{
                 width: '35vw'
             }}>
                 <Box item width='100%' textAlign='center' pt={5} pb={3} borderBottom='1px solid black'>
                     <Typography variant='h1'>
-                        Meaty Belly
+                        Rancher's Best
                     </Typography>
                 </Box>
                 <Box>
@@ -48,10 +49,9 @@ export default (props) => {
                         }
                     </Grid>
                 </Box>
-                <Box>
-                    <Button onClick={async ()=>{
+                <Box height='50px'>
+                    <Button style={{width: '100%', height: '100%'}} onClick={async ()=>{
                         checkoutMut()
-                        
                         }}>Checkout</Button>
                 </Box>
             </Grid>

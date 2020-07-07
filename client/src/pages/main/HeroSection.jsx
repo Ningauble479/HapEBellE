@@ -17,7 +17,7 @@ function HeroSection() {
           <h1 className='header__title'>High quality meat  From The farm to your home</h1>
           {/* <p className='header__subtitle'>The Future of Healthcare</p> */}
           <p className='header__shortDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ad provident accusantium mollitia hic non perferendis cum libero voluptatum omnis. <em>The last health program you'll ever need</em></p>
-          <button className='btn__med'><Link to='/login/shop' className='btn__med'>Shop Now</Link></button>
+          <button className='btn__med'><Link to='/shop' className='btn__med'>Shop Now</Link></button>
 
         </div>
       </div>
